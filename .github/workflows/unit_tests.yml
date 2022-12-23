@@ -3,6 +3,7 @@ name: 'Unit tests'
 on:
   pull_request:
 
+
 env:
   TARGETS: f7
   DEFAULT_TARGET: f7
@@ -12,7 +13,8 @@ jobs:
     runs-on: [self-hosted, FlipperZeroTest]
     steps:
       - name: 'Decontaminate previous build leftovers'
-        run: |
+        run:unleashed-firmware
+      
           if [ -d .git ]; then
             git submodule status || git checkout "$(git rev-list --max-parents=0 HEAD | tail -n 1)"
           fi
